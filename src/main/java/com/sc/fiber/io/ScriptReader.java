@@ -27,6 +27,6 @@ public class ScriptReader {
 		return true;
 	}
 	public ScriptFiber toFiber() {
-		return new ScriptFiber(this.content);
+		return new ScriptFiber(this.content, this.file);
 	}
 }
