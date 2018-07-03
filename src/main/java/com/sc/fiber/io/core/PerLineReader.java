@@ -1,8 +1,6 @@
 package com.sc.fiber.io.core;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.LineNumberReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +14,7 @@ public class PerLineReader {
 		readList.clear();
 		try {
 			FileReader reader = new FileReader(this.targetFile);
-			LineNumberReader lineReader = new LineNumberReader(reader);
+			BufferedReader lineReader = new BufferedReader(new InputStreamReader(new FileInputStream(this.targetFile),"UTF-8"));
 			String eachLine = lineReader.readLine();
 			while (eachLine != null) {
 				readList.add(eachLine);

@@ -9,7 +9,7 @@ public class ExceptionThrower {
 		Bukkit.getLogger().info("====================Fiber脚本报错信息=====================");
 		Bukkit.getLogger().info("糟糕!Fiber插件在运行的时候某个脚本报出了异常!");
 		Bukkit.getLogger().info("报错根源脚本名称: "+exception.scriptName);
-		Bukkit.getLogger().info("该脚本在运行到第 "+exception.line+" 行时输出改报错.");
+		Bukkit.getLogger().info("该脚本在运行到第 "+exception.line+" 行\"左右\"时输出改报错.");
 		Bukkit.getLogger().info("若行数是 -1 那么该报错行数是未知的.");
 		switch (whenTimeEnum) {
 			case ON_RUN:

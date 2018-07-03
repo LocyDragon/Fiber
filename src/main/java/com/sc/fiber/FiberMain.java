@@ -12,9 +12,9 @@ import java.util.List;
 
 /**
  * @author LocyDragon
- * @Date 2018/7/1
- * @Github https://github.com/LocyDragon/Fiber
- * @Wiki https://fiber.gitbook.io/fiber/
+ * Date 2018/7/1
+ * Github https://github.com/LocyDragon/Fiber
+ * Wiki https://fiber.gitbook.io/fiber/
  */
 public class FiberMain extends JavaPlugin {
 	public static List<ScriptFiber> scriptFiberList = new ArrayList<>();
@@ -42,11 +42,14 @@ public class FiberMain extends JavaPlugin {
 				} catch (IOException exc) {
 					exc.printStackTrace();
 				}
-				File location = new File(".//plugins//Fiber//fibers//");
+				File location = new File(".//plugins//Fiber//Fibers");
 				for (File scriptFile : location.listFiles()) {
-					if (scriptFile.getName().endsWith(endsWithScriptFile)) {
+					if (scriptFile.getName().trim().endsWith(endsWithScriptFile)) {
 						ScriptReader reader = new ScriptReader(scriptFile);
-						scriptFiberList.add(reader.toFiber());
+						reader.loadMe();
+						ScriptFiber fiber = reader.toFiber();
+						fiber.load();
+						scriptFiberList.add(fiber);
 					}
 				}
 				System.out.print("脚本已经全部加载完成.");

@@ -13,7 +13,7 @@ import java.util.List;
  * @author LocyDragon
  */
 public class ScriptFiber {
-	private static final String end = "$";
+	private static final char end = '$';
 
 	private File scriptLocation = null;
 
@@ -39,25 +39,33 @@ public class ScriptFiber {
 			if (StringUnderstander.isAnnotate(single)) {
 				continue;
 			} else if (StringUnderstander.isEvent(single)) {
-				if (ioLock) {
+				if (this.ioLock) {
 					ExceptionThrower.throwFiberException(new MeetTailException("上一个事件没有写结尾符号 '$' 就开始了" +
-							"下一个事件，这是不被允许的，请在该行的上面一行(单独一行)补上符号 '$'", scriptLocation.getName(), i)
+							"下一个事件，这是不被允许的，请在该行的上面一行(单独一行)补上符号 '$'", scriptLocation.getName(), i+1)
 					, WhenTimeEnum.ON_LOAD);
 					return;
 				}
 				this.ioHead = single.substring(1);
 				this.ioLock = true;
 				continue;
-			} else if (ioLock) {
-				this.io.add(single);
-			} else if (single.equals(end)) {
+			} else if (contains(single, end)) {
 				this.ioLock = false;
 				this.nowPart = new Part(this.ioHead, this.io);
 				this.codeParts.add(this.nowPart);
 				this.nowPart = null;
 				this.io.clear();
 				this.ioHead = null;
+			} else if (this.ioLock) {
+				this.io.add(single);
 			}
 		}
+	}
+	private boolean contains(String target, char to) {
+		for (char c : target.toCharArray()) {
+			if (c == to) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
