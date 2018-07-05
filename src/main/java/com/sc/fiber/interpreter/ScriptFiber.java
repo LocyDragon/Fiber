@@ -59,6 +59,7 @@ public class ScriptFiber {
 				this.io.add(single);
 			}
 		}
+		readParts();
 	}
 	private boolean contains(String target, char to) {
 		for (char c : target.toCharArray()) {
@@ -67,5 +68,11 @@ public class ScriptFiber {
 			}
 		}
 		return false;
+	}
+	public List<Part> getCodeParts() {
+		return this.codeParts;
+	}
+	private void readParts() {
+
 	}
 }
