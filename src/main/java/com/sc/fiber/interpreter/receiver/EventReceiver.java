@@ -9,5 +9,6 @@ public class EventReceiver implements Listener {
 	@EventHandler
 	public void onPlayerLoginToCall(PlayerLoginEvent e) {
 		EventCaller.callEvent(e);
+		//Call event like this
 	}
 }
