@@ -4,4 +4,5 @@ import com.sc.fiber.interpreter.Part;
 
 public interface Monitor {
 	Part monitorMe(Part before, String fileName);
+	String getPlayerString();
 }
