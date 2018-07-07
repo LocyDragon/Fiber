@@ -5,7 +5,8 @@ import java.util.List;
 public class Part {
 	private String head = null;
 	private List<String> body = null;
-
+    public String des = "";
+    public String methodName = "";
 	public Part(String head, List<String> body) {
 		this.head = head;
 		this.body = body;

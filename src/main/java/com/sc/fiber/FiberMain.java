@@ -1,7 +1,9 @@
 package com.sc.fiber;
 
 import com.sc.fiber.interpreter.ScriptFiber;
+import com.sc.fiber.interpreter.receiver.EventReceiver;
 import com.sc.fiber.io.ScriptReader;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -21,6 +23,7 @@ public class FiberMain extends JavaPlugin {
 	public static final String endsWithScriptFile = ".fib";
 	@Override
 	public void onEnable() {
+		Bukkit.getPluginManager().registerEvents(new EventReceiver(), this);
 		Thread asyncLoadScript = new Thread(new Runnable() {
 			@Override
 			public void run() {
