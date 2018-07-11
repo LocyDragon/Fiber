@@ -29,6 +29,9 @@ public class EasyStringUtil {
 		if (!AA.contains(BB)) {
 			return AA;
 		}
+		if (AA.contains(":")) {
+			AA = AA.split(":")[0];
+		}
 		int location = AA.indexOf(BB);
 		AA = AA.replace(BB, CC);
 		List<Character> characterList = new ArrayList<>();
