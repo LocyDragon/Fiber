@@ -11,7 +11,9 @@ public class IfInterpreter {
 			in.replace("!", "}");
 		} else if (in.startsWith("如果")) {
 			in.replace("如果", "if (");
-			in += ")";
+			in += ") {";
+		} else if (in.startsWith("否则")) {
+			in.replace("否则", "else {");
 		}
 		return in;
 	}
