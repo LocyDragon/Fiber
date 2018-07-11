@@ -12,6 +12,7 @@ public class EntityFiber implements Fiber {
 		obj = EasyStringUtil.private_Method_I(obj, "掉落距离", "getFallDistance()");
 		obj = EasyStringUtil.private_Method_I(obj, "着火时间", "getFireTicks()");
 		obj = EasyStringUtil.private_Method_I(obj ,"身高", "getHeight()");
+		obj = EasyStringUtil.private_Method_I(obj ,"坐标", "getLocation()");
 		//lose one method
 		return obj;
 	}
